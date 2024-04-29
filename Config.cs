@@ -13,4 +13,6 @@ public static class Config
 
     // How to split the individual data
     public static string Splitter = "\r\n";
+
+    public static int Permutations = 10000;
 }

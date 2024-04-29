@@ -6,7 +6,6 @@ internal class Program
     {
         var input = new List<int>();
         var text = File.ReadAllText(Config.InputPath);
-        Console.WriteLine(text);
         string[] words = text.Split(Config.Splitter);
 
         foreach (string word in words)
@@ -14,31 +13,31 @@ internal class Program
             int cislo = Int32.Parse(word);
             input.Add(cislo);
         }
-        Console.WriteLine(input[3] + input[5]);
+
+        var random = new Random();
 
 
-        Console.ReadLine();
+        for (float i = 0; i < Config.Permutations; i++)
+        {
+            var buffer = new List<int>();
+            buffer.AddRange(input);
+            int sum = 0;
+            for (int j = 0; j < Config.Percentage; j++)
+            {
+                var rng = random.Next(0, buffer.Count);
+                sum = sum + buffer[rng];
+                //Console.WriteLine(buffer[rng]);
+                buffer.Remove(buffer[rng]);
+            }
+            using (StreamWriter outputFile = new StreamWriter(Config.OutputPath, true))
+            {
+                outputFile.WriteLine(sum);
+            }
+            Console.WriteLine(i/100 + "%");
+        }
 
-        //int cislo = Int32.Parse(input);
+        Console.WriteLine("100%");
 
-
-
-
-
-        //var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        //var random = new Random();
-        //int sum = 0;
-
-        //for (int i = 0; i < Config.Percentage; i++)
-        //{
-        //    var rng = random.Next(0, numbers.Count);
-        //    sum = sum + numbers[rng];
-        //    Console.WriteLine(numbers[rng]);
-        //    numbers.Remove(numbers[rng]);
-        //}
-
-
-        //Console.WriteLine(sum);
 
 
 

@@ -4,13 +4,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var input = new List<int>();
+        var input = new List<float>();
         var text = File.ReadAllText(Config.InputPath);
         string[] words = text.Split(Config.Splitter);
 
         foreach (string word in words)
         {
-            int cislo = Int32.Parse(word);
+            float cislo = float.Parse(word);
             input.Add(cislo);
         }
 
@@ -19,9 +19,9 @@ internal class Program
 
         for (float i = 0; i < Config.Permutations; i++)
         {
-            var buffer = new List<int>();
+            var buffer = new List<float>();
             buffer.AddRange(input);
-            int sum = 0;
+            float sum = 0;
             for (int j = 0; j < Config.Percentage; j++)
             {
                 var rng = random.Next(0, buffer.Count);
@@ -31,7 +31,7 @@ internal class Program
             }
             using (StreamWriter outputFile = new StreamWriter(Config.OutputPath, true))
             {
-                outputFile.WriteLine(sum);
+                outputFile.WriteLine(sum/Config.Percentage);
             }
             Console.WriteLine(i/100 + "%");
         }

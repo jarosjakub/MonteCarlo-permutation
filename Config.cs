@@ -3,7 +3,7 @@
 public static class Config
 {
     // How many items do you want to choose from the base range
-    public static int Percentage = 5;
+    public static int Percentage = 6;
 
     // Path to your input file
     public static string InputPath = "C:\\Users\\jakub.jaros\\Desktop\\test.txt";

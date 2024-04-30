@@ -26,26 +26,14 @@ internal class Program
             {
                 var rng = random.Next(0, buffer.Count);
                 sum = sum + buffer[rng];
-                //Console.WriteLine(buffer[rng]);
                 buffer.Remove(buffer[rng]);
             }
             using (StreamWriter outputFile = new StreamWriter(Config.OutputPath, true))
             {
-                outputFile.WriteLine(sum/Config.Percentage);
+                outputFile.WriteLine(sum);
             }
             Console.WriteLine(i/100 + "%");
         }
-
         Console.WriteLine("100%");
-
-
-
-
-
-
-
-
-
-
     }
 }
